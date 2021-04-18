@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
+import com.anhtong8x.myapplication.config.GlobalVariableApp;
 import com.anhtong8x.myapplication.contract.LoginContract;
 import com.anhtong8x.myapplication.model.LoginRequest;
 import com.anhtong8x.myapplication.presenter.LoginPresenter;
@@ -72,8 +73,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void loginSuccess(String token) {
         Toast.makeText(this, token, Toast.LENGTH_LONG).show();
-        // token != null save sharereferent
-        // call mainactivity
+        if(token.isEmpty() == false){
+            final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
+            globalVariableApp.setmToken(token);
+            final String tk = globalVariableApp.getmToken();
+            startActivity(new Intent(this, MainActivity.class));
+        }
 
     }
 

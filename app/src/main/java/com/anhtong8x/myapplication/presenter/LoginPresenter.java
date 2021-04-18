@@ -28,6 +28,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                     return;
                 }
 
+                // save global variable
                 mView.loginSuccess("Save Token: " + loginResult.getResultObj());
 
             }
