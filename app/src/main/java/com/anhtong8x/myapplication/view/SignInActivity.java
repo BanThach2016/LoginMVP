@@ -34,6 +34,7 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
 
     }
 
+    // init view
     private void initView() {
         mTextPassWord = findViewById(R.id.text_password);
         mTextUserName = findViewById(R.id.text_username);
@@ -41,11 +42,13 @@ public class SignInActivity extends AppCompatActivity implements SignInContract.
         mTextViewSignUp = findViewById(R.id.button_sign_up);
     }
 
+    // init event click
     private void initPresenter() {
         mButtonSignIn.setOnClickListener(this);
         mTextViewSignUp.setOnClickListener(this);
     }
 
+    // init presenter
     private void registerListener() {
         mSignInPresenter = new SignInPresenter();
         mSignInPresenter.setmView(this);

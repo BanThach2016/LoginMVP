@@ -10,6 +10,8 @@ public interface SignInContract {
 
     interface Presenter{
         void handleSignIn(String mUserName, String mPassWord);
+
+
     }
 
 }
