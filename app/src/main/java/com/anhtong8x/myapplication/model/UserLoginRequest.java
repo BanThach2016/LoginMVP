@@ -1,10 +1,10 @@
 package com.anhtong8x.myapplication.model;
 
-public class LoginRequest {
+public class UserLoginRequest {
     String UserName, Password;
     Boolean RememberMe;
 
-    public LoginRequest(String userName, String password, Boolean rememberMe) {
+    public UserLoginRequest(String userName, String password, Boolean rememberMe) {
         UserName = userName;
         Password = password;
         RememberMe = rememberMe;

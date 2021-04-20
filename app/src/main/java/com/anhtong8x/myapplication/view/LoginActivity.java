@@ -12,16 +12,16 @@ import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
 import com.anhtong8x.myapplication.config.GlobalVariableApp;
-import com.anhtong8x.myapplication.contract.LoginContract;
-import com.anhtong8x.myapplication.model.LoginRequest;
-import com.anhtong8x.myapplication.presenter.LoginPresenter;
+import com.anhtong8x.myapplication.contract.UserLoginContract;
+import com.anhtong8x.myapplication.model.UserLoginRequest;
+import com.anhtong8x.myapplication.presenter.UserLoginPresenter;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View, View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements UserLoginContract.View, View.OnClickListener {
     private EditText mTextUserName;
     private EditText mTextPassWord;
     private Button mButtonSignIn;
     private TextView mTextViewSignUp;
-    private LoginPresenter mLoginPresenter;
+    private UserLoginPresenter mLoginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     // init presenter
     private void registerListener() {
-        mLoginPresenter = new LoginPresenter();
+        mLoginPresenter = new UserLoginPresenter();
         mLoginPresenter.setmView(this);
     }
 
@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         if(token.isEmpty() == false){
             final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
             globalVariableApp.setmToken(token);
-            final String tk = globalVariableApp.getmToken();
-            startActivity(new Intent(this, MainActivity.class));
+            //final String tk = globalVariableApp.getmToken();
+            startActivity(new Intent(this, SystemActivity.class));
         }
 
     }
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             return;
         }
 
-        mLoginPresenter.loginHandle(new LoginRequest(u,p,true));
+        mLoginPresenter.loginHandle(new UserLoginRequest(u,p,true));
     }
 
 }

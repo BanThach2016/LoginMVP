@@ -2,7 +2,7 @@ package com.anhtong8x.myapplication.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResult {
+public class UserResult {
     @SerializedName("isSuccessed")
     Boolean isSuccessed;
     @SerializedName("message")
@@ -10,7 +10,7 @@ public class LoginResult {
     @SerializedName("resultObj")
     String resultObj;
 
-    public LoginResult(Boolean isSuccessed, String message, String resultObj) {
+    public UserResult(Boolean isSuccessed, String message, String resultObj) {
         this.isSuccessed = isSuccessed;
         this.message = message;
         this.resultObj = resultObj;
