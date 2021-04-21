@@ -10,7 +10,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
-public interface IUserService {
+public interface IUsersService {
     
     @FormUrlEncoded
     @POST("Users/authenticate")
@@ -31,4 +31,15 @@ public interface IUserService {
                             @Header("Authorization") String token
                              );
 
+    @FormUrlEncoded
+    @POST("/api/Users")
+    Call<UserResult> Create1(@Field("FirstName") String uFirstName,
+                            @Field("LastName") String uLastName,
+                            @Field("Dob") String uDob,
+                            @Field("Email") String uEmail,
+                            @Field("PhoneNumber") String uPhoneNumber,
+                            @Field("UserName") String uUserName,
+                            @Field("Password") String uPassword,
+                            @Field("ConfirmPassword") String uConfirmPassword
+    );
 }

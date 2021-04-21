@@ -1,7 +1,5 @@
 package com.anhtong8x.myapplication.apihelper;
 
-import android.util.Log;
-
 import com.anhtong8x.myapplication.contract.UserCreateCallBack;
 import com.anhtong8x.myapplication.contract.UserLoginCallBack;
 import com.anhtong8x.myapplication.model.UserCreateRequest;
@@ -12,8 +10,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserService {
-    IUserService mIUserService;
+public class UsersService {
+    IUsersService mIUserService;
     UserLoginRequest mLoginRequest;
     UserCreateRequest mUserCreateRequest;
 
@@ -25,17 +23,17 @@ public class UserService {
         this.mLoginRequest = mLoginRequest;
     }
 
-    public UserService() {
-        this.mIUserService = ApiService.getClient().create(IUserService.class);
+    public UsersService() {
+        this.mIUserService = ApiService.getClient().create(IUsersService.class);
     }
 
-    public UserService(UserCreateRequest mUserCreateRequest) {
-        this.mIUserService = ApiService.getClient().create(IUserService.class);
+    public UsersService(UserCreateRequest mUserCreateRequest, String token) {
+        this.mIUserService = ApiService.getClientAuthorization(token).create(IUsersService.class);
         this.mUserCreateRequest = mUserCreateRequest;
     }
 
-    public UserService(UserLoginRequest mLoginRequest) {
-        this.mIUserService = ApiService.getClient().create(IUserService.class);
+    public UsersService(UserLoginRequest mLoginRequest) {
+        this.mIUserService = ApiService.getClient().create(IUsersService.class);
         this.mLoginRequest = mLoginRequest;
     }
 
@@ -62,6 +60,7 @@ public class UserService {
         });
     }
 
+    // dua token len vao tham so
     public void create(String token, final UserCreateCallBack dataCallBack){
         Call<UserResult> res = mIUserService.Create(
                 mUserCreateRequest.getuFirstName(),
@@ -89,6 +88,35 @@ public class UserService {
                 dataCallBack.onFetchFault(new Exception(t));
             }
         });
-
     }
+
+    // da add token vao header tu apiservice
+    public void create1(final UserCreateCallBack dataCallBack){
+        Call<UserResult> res = mIUserService.Create1(
+                mUserCreateRequest.getuFirstName(),
+                mUserCreateRequest.getuLastName(),
+                mUserCreateRequest.getuDob(),
+                mUserCreateRequest.getuEmail(),
+                mUserCreateRequest.getuPhoneNumber(),
+                mUserCreateRequest.getuUserName(),
+                mUserCreateRequest.getuPassword(),
+                mUserCreateRequest.getuConfirmPassword()
+        );
+        res.enqueue(new Callback<UserResult>() {
+            @Override
+            public void onResponse(Call<UserResult> call, Response<UserResult> response) {
+                try {
+                    dataCallBack.onFetchSuccess(response.body());
+                } catch (Exception e) {
+                    dataCallBack.onFetchFault(e);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResult> call, Throwable t) {
+                dataCallBack.onFetchFault(new Exception(t));
+            }
+        });
+    }
+
 }

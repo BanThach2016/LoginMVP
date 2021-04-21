@@ -1,6 +1,6 @@
 package com.anhtong8x.myapplication.presenter;
 
-import com.anhtong8x.myapplication.apihelper.UserService;
+import com.anhtong8x.myapplication.apihelper.UsersService;
 import com.anhtong8x.myapplication.config.Message;
 import com.anhtong8x.myapplication.contract.UserCreateCallBack;
 import com.anhtong8x.myapplication.contract.UserCreateContract;
@@ -11,7 +11,7 @@ public class UserCreatePresenter implements UserCreateContract.Presenter {
     private String TAG = UserCreatePresenter.class.getSimpleName();
     private UserCreateContract.View mView;
 
-    private UserService mUserService;
+    private UsersService mUserService;
 
     public void setmView(UserCreateContract.View mView) {
         this.mView = mView;
@@ -19,8 +19,8 @@ public class UserCreatePresenter implements UserCreateContract.Presenter {
 
     @Override
     public void createHandle(UserCreateRequest userCreateRequest, String token) {
-        mUserService = new UserService(userCreateRequest);
-        mUserService.create(token, new UserCreateCallBack() {
+        mUserService = new UsersService(userCreateRequest, token);
+        mUserService.create1(new UserCreateCallBack() {
             @Override
             public void onFetchSuccess(UserResult userResult) {
                 if(!userResult.getSuccessed()){

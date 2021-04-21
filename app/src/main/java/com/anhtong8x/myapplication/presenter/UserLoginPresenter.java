@@ -1,6 +1,6 @@
 package com.anhtong8x.myapplication.presenter;
 
-import com.anhtong8x.myapplication.apihelper.UserService;
+import com.anhtong8x.myapplication.apihelper.UsersService;
 import com.anhtong8x.myapplication.config.Message;
 import com.anhtong8x.myapplication.contract.UserLoginContract;
 import com.anhtong8x.myapplication.contract.UserLoginCallBack;
@@ -11,7 +11,7 @@ public class UserLoginPresenter implements UserLoginContract.Presenter {
     private String TAG = UserLoginPresenter.class.getSimpleName();
     private UserLoginContract.View mView;
 
-    private UserService mUserService;
+    private UsersService mUserService;
 
     public void setmView(UserLoginContract.View mView) {
         this.mView = mView;
@@ -19,7 +19,7 @@ public class UserLoginPresenter implements UserLoginContract.Presenter {
 
     @Override
     public void loginHandle(UserLoginRequest loginRequest) {
-        mUserService = new UserService(loginRequest);
+        mUserService = new UsersService(loginRequest);
         mUserService.login(new UserLoginCallBack() {
             @Override
             public void onFetchSuccess(UserResult loginResult) {

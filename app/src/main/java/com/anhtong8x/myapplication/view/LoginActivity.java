@@ -16,6 +16,8 @@ import com.anhtong8x.myapplication.contract.UserLoginContract;
 import com.anhtong8x.myapplication.model.UserLoginRequest;
 import com.anhtong8x.myapplication.presenter.UserLoginPresenter;
 
+import static com.anhtong8x.myapplication.config.Message.MSG_EMPTY_USER_PASS;
+
 public class LoginActivity extends AppCompatActivity implements UserLoginContract.View, View.OnClickListener {
     private EditText mTextUserName;
     private EditText mTextPassWord;
@@ -92,7 +94,7 @@ public class LoginActivity extends AppCompatActivity implements UserLoginContrac
         String p = mTextPassWord.getText().toString();
 
         if(u.isEmpty() || p.isEmpty()){
-            Toast.makeText(this, "UserName or PassWord is empty!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, MSG_EMPTY_USER_PASS, Toast.LENGTH_LONG).show();
             return;
         }
 
