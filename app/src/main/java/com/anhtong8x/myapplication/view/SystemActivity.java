@@ -49,7 +49,7 @@ public class SystemActivity extends AppCompatActivity implements View.OnClickLis
                 CallActivity(0);
                 break;
             case R.id.btnDelete:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, ProductActivity.class));
                 break;
             default:
                 break;
@@ -61,5 +61,4 @@ public class SystemActivity extends AppCompatActivity implements View.OnClickLis
         intent.putExtra("action", action);
         startActivity(intent);
     }
-
 }

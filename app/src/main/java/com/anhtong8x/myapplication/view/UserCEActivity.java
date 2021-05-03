@@ -18,6 +18,7 @@ import com.anhtong8x.myapplication.model.UserCreateRequest;
 import com.anhtong8x.myapplication.model.UserResult;
 import com.anhtong8x.myapplication.presenter.UserCreatePresenter;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,13 +59,13 @@ public class UserCEActivity extends AppCompatActivity implements View.OnClickLis
 
     // init event click
     private void initPresenter() {
-        btnSave.setOnClickListener(this);
+        userCreatePresenter = new UserCreatePresenter();
+        userCreatePresenter.setmView(this);
     }
 
     // init presenter
     private void registerListener() {
-        userCreatePresenter = new UserCreatePresenter();
-        userCreatePresenter.setmView(this);
+        btnSave.setOnClickListener(this);
     }
 
     @Override
@@ -132,5 +133,6 @@ public class UserCEActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
+
 
 }

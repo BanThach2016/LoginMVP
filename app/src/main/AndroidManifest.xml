@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginMVP">
-        <activity android:name=".view.UserCEActivity"></activity>
+        <activity android:name=".view.ProductActivity"></activity>
+        <activity android:name=".view.UserCEActivity" />
         <activity android:name=".view.SystemActivity" />
         <activity android:name=".view.LoginActivity">
             <intent-filter>

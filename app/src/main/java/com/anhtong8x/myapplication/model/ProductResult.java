@@ -2,13 +2,14 @@ package com.anhtong8x.myapplication.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductResult {
     @SerializedName("totalRecord")
     private int totalRecord;
     @SerializedName("items")
-    private List<Item> items;
+    private ArrayList<Item> items;
 
     public int getTotalRecord() {
         return totalRecord;
@@ -18,15 +19,15 @@ public class ProductResult {
         this.totalRecord = totalRecord;
     }
 
-    public List<Item> getItems() {
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
 
-    class Item{
+    public class Item{
         @SerializedName("id")
         int id;
         @SerializedName("price")
