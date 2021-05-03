@@ -34,5 +34,4 @@ public interface IProductsService {
             @Header("Authorization") String token
             );
 
-
 }
