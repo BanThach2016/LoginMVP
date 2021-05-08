@@ -3,6 +3,7 @@
     package="com.anhtong8x.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".config.GlobalVariableApp"
@@ -12,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginMVP">
-        <activity android:name=".view.ProductActivity"></activity>
+        <activity android:name=".view.UpLoadActivity"></activity>
+        <activity android:name=".view.ProductActivity" />
         <activity android:name=".view.UserCEActivity" />
         <activity android:name=".view.SystemActivity" />
         <activity android:name=".view.LoginActivity">

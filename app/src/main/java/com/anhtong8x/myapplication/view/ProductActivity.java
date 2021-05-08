@@ -93,7 +93,7 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
                 final String token = globalVariableApp.getmToken();
                // productPagingPresenter.handlePaging(new ProductPagingRequest(1,1,1),token);
                 //getPaging();
-                upImageProduct();
+                //upImageProduct();
                 break;
             default:
                 break;
@@ -140,7 +140,7 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
         final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
         final String token = globalVariableApp.getmToken();
         IProductsService iProductsService = ApiService.getClient().create(IProductsService.class);
-        Call<ResponseBody> res = iProductsService.upImageProduct(1,jsParams.toString());
+        Call<ResponseBody> res = iProductsService.upImageProduct(1,jsParams.toString(), token);
 
         res.enqueue(new Callback<ResponseBody>() {
             @Override
