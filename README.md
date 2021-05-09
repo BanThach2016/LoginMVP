@@ -25,7 +25,7 @@ ex: SignIn
   + Tham so callback: phai khai bao la final, de goi cac ham xu ly callback cua interface buoc 3
   + Token co the them vao o buoc nay ( ham login k can token, cac ham xu ly du lieu phai co )
 
-5. Interface: UserLoginContract.java
+5. Interface: UserLoginContract.java ( Nen dinh nghia kieu du lieu T de su dung nhieu trong cac class )
 - Dinh nghia cac interface co cac ham xu ly cho cac class o Presenter va View
 - Day la interface trung gian cho ca 2 class
 
