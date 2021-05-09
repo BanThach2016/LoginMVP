@@ -8,7 +8,7 @@ ex: SignIn
 
 2. Interface: IUsersService.java
 - Dinh nghia cac interface cho api retrofit
-- Co 2 cac add token vao header cua request 
+- Co 2 cach add token vao header cua request 
   + Them vao moi interface khi khai bao
   + Them vao khi khoi tao doi tuong retrofit 
 
