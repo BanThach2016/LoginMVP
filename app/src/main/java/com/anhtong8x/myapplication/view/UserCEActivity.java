@@ -134,5 +134,4 @@ public class UserCEActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-
 }

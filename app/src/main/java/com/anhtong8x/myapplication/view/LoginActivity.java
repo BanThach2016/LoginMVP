@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements UserLoginContrac
             globalVariableApp.setmToken(token);
             //final String tk = globalVariableApp.getmToken();
             //startActivity(new Intent(this, SystemActivity.class));
-            startActivity(new Intent(this, UpLoadActivity.class));
+            startActivity(new Intent(this, UpLoadProductActivity.class));
         }
 
     }

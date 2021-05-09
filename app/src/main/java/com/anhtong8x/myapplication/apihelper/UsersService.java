@@ -13,6 +13,7 @@ import retrofit2.Response;
 public class UsersService {
     IUsersService mIUserService;
     UserLoginRequest mLoginRequest;
+
     UserCreateRequest mUserCreateRequest;
 
     public void setmUserCreateRequest(UserCreateRequest mUserCreateRequest) {
@@ -90,9 +91,9 @@ public class UsersService {
         });
     }
 
-    // da add token vao header tu apiservice
+    // da add token vao header tu api service
     public void create1(final UserCreateCallBack dataCallBack){
-        Call<UserResult> res = mIUserService.Create1(
+        Call<UserResult> res = mIUserService.create_1(
                 mUserCreateRequest.getuFirstName(),
                 mUserCreateRequest.getuLastName(),
                 mUserCreateRequest.getuDob(),

@@ -12,6 +12,5 @@ public interface ProductPagingContract {
 
     interface Presenter{
         void handlePaging(ProductPagingRequest productPagingRequest, String token);
-
     }
 }

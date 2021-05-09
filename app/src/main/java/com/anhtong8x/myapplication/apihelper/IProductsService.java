@@ -18,8 +18,7 @@ import retrofit2.http.Query;
 
 public interface IProductsService {
 
-    //http://192.168.0.175:8088/api/Products/vi-VN?CategoryId=1&PageIndex=1&PageSize=1
-    //http://192.168.0.110:8089/api/Products/vi-VN?CategoryId=1&PageIndex=1&PageSize=1
+    //...api/Products/vi-VN?CategoryId=1&PageIndex=1&PageSize=1
     @GET("Products/{languageId}")
     Call<ProductResult> getPaging(@Path("languageId") String languageId,
                                   @Query("CategoryId") Integer CategoryId,
@@ -28,16 +27,7 @@ public interface IProductsService {
                                   @Header("Authorization") String token
                                   );
 
-    //http://192.168.0.110:8089/api/Products/1/images
-    @FormUrlEncoded
-    @POST("Products/{productId}/images")
-    Call<ResponseBody> upImageProduct(
-            @Path("productId") Integer productId,
-            @Body String body,
-            @Header("Authorization") String token
-            );
-
-
+    //.../api/Products/{productId}/images
     @Multipart
     @POST("Products/{productId}/images")
     Call<ResponseBody> uploadFile(

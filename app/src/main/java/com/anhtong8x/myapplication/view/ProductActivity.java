@@ -67,7 +67,6 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
         btnGetPaging.setOnClickListener(this);
     }
 
-
     private void getPagingProduct() {
         final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
         final String token = globalVariableApp.getmToken();
@@ -100,6 +99,7 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
         }
     }
 
+    // code truc tiep k mvp
     void getPaging(){
         final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
         final String token = globalVariableApp.getmToken();
@@ -124,37 +124,6 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
                 Log.d("TagP", "Error" + t.toString());
             }
         });
-    }
-
-    void upImageProduct(){
-        JSONObject jsParams = new JSONObject();
-        try {
-            jsParams.put("Caption",1);
-            jsParams.put("IsDefault", true);
-            jsParams.put("SortOrder", 1);
-            jsParams.put("ImageFile","");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
-        final String token = globalVariableApp.getmToken();
-        IProductsService iProductsService = ApiService.getClient().create(IProductsService.class);
-        Call<ResponseBody> res = iProductsService.upImageProduct(1,jsParams.toString(), token);
-
-        res.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.d("TagP", "Error" + response.toString());
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d("TagP", "Error" + t.toString());
-            }
-        });
-
-
     }
 
 }

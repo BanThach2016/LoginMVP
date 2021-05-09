@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginMVP">
-        <activity android:name=".view.UpLoadActivity"></activity>
+        <activity android:name=".view.UpLoadProductActivity"></activity>
         <activity android:name=".view.ProductActivity" />
         <activity android:name=".view.UserCEActivity" />
         <activity android:name=".view.SystemActivity" />

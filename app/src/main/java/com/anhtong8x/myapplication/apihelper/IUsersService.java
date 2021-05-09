@@ -14,13 +14,18 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface IUsersService {
-    
+
+    // call api login get token
+    // post only have a @FormUrlEncoded
+    // .../api/Users/authenticate
     @FormUrlEncoded
     @POST("Users/authenticate")
     Call<UserResult> GetToken(@Field("UserName") String uName,
                               @Field("Password") String uPassword,
                               @Field("RememberMe") boolean uRemember);
 
+    // create added token in header
+    // ... /api/Users
     @FormUrlEncoded
     @POST("/api/Users")
     Call<UserResult> Create(@Field("FirstName") String uFirstName,
@@ -34,16 +39,18 @@ public interface IUsersService {
                             @Header("Authorization") String token
                              );
 
+    // token was add in header request retrofit
+    // ... /api/Users
     @FormUrlEncoded
     @POST("/api/Users")
-    Call<UserResult> Create1(@Field("FirstName") String uFirstName,
-                            @Field("LastName") String uLastName,
-                            @Field("Dob") String uDob,
-                            @Field("Email") String uEmail,
-                            @Field("PhoneNumber") String uPhoneNumber,
-                            @Field("UserName") String uUserName,
-                            @Field("Password") String uPassword,
-                            @Field("ConfirmPassword") String uConfirmPassword
+    Call<UserResult> create_1(@Field("FirstName") String uFirstName,
+                              @Field("LastName") String uLastName,
+                              @Field("Dob") String uDob,
+                              @Field("Email") String uEmail,
+                              @Field("PhoneNumber") String uPhoneNumber,
+                              @Field("UserName") String uUserName,
+                              @Field("Password") String uPassword,
+                              @Field("ConfirmPassword") String uConfirmPassword
     );
 
 }
