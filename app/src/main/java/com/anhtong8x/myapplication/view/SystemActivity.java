@@ -8,17 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.anhtong8x.myapplication.R;
-import com.anhtong8x.myapplication.apihelper.ApiService;
-import com.anhtong8x.myapplication.apihelper.IProductsService;
-import com.anhtong8x.myapplication.config.GlobalVariableApp;
-
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 
 public class SystemActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnCreate, btnEdit, btnDelete, btnTest;
+    private Button btnCreate, btnEdit, btnGets, btnUploadFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +28,16 @@ public class SystemActivity extends AppCompatActivity implements View.OnClickLis
     private void initView() {
         btnCreate = findViewById(R.id.btnCreate);
         btnEdit = findViewById(R.id.btnEdit);
-        btnDelete = findViewById(R.id.btnDelete);
-        btnTest = findViewById(R.id.btnTest);
+        btnGets = findViewById(R.id.btnGets);
+        btnUploadFile = findViewById(R.id.btnUploadFile);
     }
 
     // init event click
     private void initPresenter() {
         btnCreate.setOnClickListener(this);
         btnEdit.setOnClickListener(this);
-        btnDelete.setOnClickListener(this);
-        btnTest.setOnClickListener(this);
+        btnGets.setOnClickListener(this);
+        btnUploadFile.setOnClickListener(this);
     }
 
     @Override
@@ -56,28 +49,15 @@ public class SystemActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btnEdit:
                 CallActivity(0);
                 break;
-            case R.id.btnDelete:
+            case R.id.btnGets:
                 startActivity(new Intent(this, ProductActivity.class));
                 break;
-            case R.id.btnTest:
-                testFunction();
+            case R.id.btnUploadFile:
+                startActivity(new Intent(this, UpLoadProductActivity.class));
                 break;
             default:
                 break;
         }
-    }
-
-    private void testFunction() {
-        final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
-        final String token = globalVariableApp.getmToken();
-        IProductsService iProductsService = ApiService.getClient().create(IProductsService.class);
-
-        String Caption = "Caption hello, this is description speaking";
-        Boolean IsDefault = Boolean.TRUE;
-        Integer SortOrder = 1;
-
-
-
     }
 
     private void CallActivity(int action){

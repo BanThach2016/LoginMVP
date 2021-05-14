@@ -1,6 +1,7 @@
-package com.anhtong8x.myapplication.apihelper;
+package com.anhtong8x.myapplication.service;
 
-import com.anhtong8x.myapplication.contract.ProductPagingCallBack;
+import com.anhtong8x.myapplication.apihelper.ApiService;
+import com.anhtong8x.myapplication.contract.BaseCallBack;
 import com.anhtong8x.myapplication.contract.UploadProductCallBack;
 import com.anhtong8x.myapplication.model.ProductPagingRequest;
 import com.anhtong8x.myapplication.model.ProductResult;
@@ -13,24 +14,31 @@ import retrofit2.Response;
 
 public class ProductsService {
     IProductsService mIProductsService;
+
     ProductPagingRequest mProductPagingRequest;
     UploadProductRequest mUploadProductRequest;
 
-    public ProductsService(ProductPagingRequest mProductPagingRequest, String token) {
+    // contractors
+    // contractor getPaging
+    public ProductsService(ProductPagingRequest mProductPagingRequest) {
         this.mProductPagingRequest = mProductPagingRequest;
-        this.mIProductsService = ApiService.getClientAuthorization(token).create(IProductsService.class);
+        this.mIProductsService = ApiService.getClient().create(IProductsService.class);
     }
 
-    public ProductsService( UploadProductRequest mUploadProductRequest, String token) {
+    // contractor upload file
+    public ProductsService( UploadProductRequest mUploadProductRequest) {
         this.mIProductsService = ApiService.getClient().create(IProductsService.class);
         this.mUploadProductRequest = mUploadProductRequest;
     }
 
-    public void getPaging(final ProductPagingCallBack dataCallBack){
-        /*Call<ProductResult> res = mIProductsService.getPaging(mProductPagingRequest.getCategoryId(),
-                mProductPagingRequest.getPageIndex(), mProductPagingRequest.getPageSize());
-
-
+    // gets product
+    public void getsPaging(String token, final BaseCallBack<ProductResult, Exception> dataCallBack){
+        Call<ProductResult> res = mIProductsService.getPaging(
+                mProductPagingRequest.getLanguageId(),
+                mProductPagingRequest.getCategoryId(),
+                mProductPagingRequest.getPageIndex(),
+                mProductPagingRequest.getPageSize(),
+                "Bearer " + token);
         res.enqueue(new Callback<ProductResult>() {
             @Override
             public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
@@ -45,9 +53,10 @@ public class ProductsService {
             public void onFailure(Call<ProductResult> call, Throwable t) {
                 dataCallBack.onFetchFault(new Exception(t));
             }
-        });*/
+        });
     }
 
+    // upload image product
     public void uploadFile(String token, final UploadProductCallBack dataCallBack){
         Call<ResponseBody> res = mIProductsService.uploadFile(
                 mUploadProductRequest.getProductId(),

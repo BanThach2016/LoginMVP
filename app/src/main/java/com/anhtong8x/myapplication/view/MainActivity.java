@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
-import com.anhtong8x.myapplication.config.GlobalVariableApp;
+import com.anhtong8x.myapplication.utility.GlobalVariableApp;
 
 
 public class MainActivity extends AppCompatActivity {

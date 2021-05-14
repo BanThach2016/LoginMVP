@@ -7,7 +7,11 @@ public interface BaseContract {
         void createSuccess(M msg);
         void createFailure(E msg);
     }
-    interface Presenter<R, T>{
-        void createHandle(R request, T token);
+    interface Presenter<T, C, U, D, G, F>{
+        void createHandle(C request, T token);
+        void updateHandle(U request, T token);
+        void deleteHandle(D request, T token);
+        void getHandle(G request, T token);
+        void getsHandle(F request, T token);
     }
 }

@@ -1,4 +1,4 @@
-package com.anhtong8x.myapplication.config;
+package com.anhtong8x.myapplication.utility;
 
 import android.app.Application;
 

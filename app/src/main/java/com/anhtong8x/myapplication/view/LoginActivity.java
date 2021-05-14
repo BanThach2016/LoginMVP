@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
-import com.anhtong8x.myapplication.config.GlobalVariableApp;
+import com.anhtong8x.myapplication.utility.GlobalVariableApp;
 import com.anhtong8x.myapplication.contract.UserLoginContract;
 import com.anhtong8x.myapplication.model.UserLoginRequest;
 import com.anhtong8x.myapplication.presenter.UserLoginPresenter;
@@ -79,8 +79,8 @@ public class LoginActivity extends AppCompatActivity implements UserLoginContrac
             final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
             globalVariableApp.setmToken(token);
             //final String tk = globalVariableApp.getmToken();
-            //startActivity(new Intent(this, SystemActivity.class));
-            startActivity(new Intent(this, UpLoadProductActivity.class));
+            startActivity(new Intent(this, SystemActivity.class));
+            //startActivity(new Intent(this, UpLoadProductActivity.class));
         }
 
     }

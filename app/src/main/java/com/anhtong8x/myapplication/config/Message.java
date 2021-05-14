@@ -6,4 +6,5 @@ public class Message {
     public static String MSG_LOGIN_ERR = "Username or Password not true!";
     public static String MSG_CREATE_OK = "Create data success !";
     public static String MSG_CREATE_ERR = "Create data unsuccess !";
+    public static String MSG_ERROR = "Error code ";
 }

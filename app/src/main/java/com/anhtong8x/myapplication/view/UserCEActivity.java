@@ -11,14 +11,13 @@ import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
 import com.anhtong8x.myapplication.apihelper.ApiService;
-import com.anhtong8x.myapplication.apihelper.IUsersService;
-import com.anhtong8x.myapplication.config.GlobalVariableApp;
+import com.anhtong8x.myapplication.service.IUsersService;
+import com.anhtong8x.myapplication.utility.GlobalVariableApp;
 import com.anhtong8x.myapplication.contract.UserCreateContract;
 import com.anhtong8x.myapplication.model.UserCreateRequest;
 import com.anhtong8x.myapplication.model.UserResult;
 import com.anhtong8x.myapplication.presenter.UserCreatePresenter;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -1,4 +1,4 @@
-package com.anhtong8x.myapplication.apihelper;
+package com.anhtong8x.myapplication.service;
 
 import com.anhtong8x.myapplication.model.ProductResult;
 

@@ -18,9 +18,9 @@ import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
 import com.anhtong8x.myapplication.apihelper.ApiService;
-import com.anhtong8x.myapplication.apihelper.IProductsService;
-import com.anhtong8x.myapplication.config.GlobalVariableApp;
-import com.anhtong8x.myapplication.config.ReadPathUtil;
+import com.anhtong8x.myapplication.service.IProductsService;
+import com.anhtong8x.myapplication.utility.GlobalVariableApp;
+import com.anhtong8x.myapplication.utility.ReadPathUtil;
 import com.anhtong8x.myapplication.contract.UploadProductContract;
 import com.anhtong8x.myapplication.model.UploadProductRequest;
 import com.anhtong8x.myapplication.presenter.UploadProductPresenter;

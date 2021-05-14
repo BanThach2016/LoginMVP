@@ -2,41 +2,23 @@ package com.anhtong8x.myapplication.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.ArrayMap;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.anhtong8x.myapplication.R;
-import com.anhtong8x.myapplication.apihelper.ApiService;
-import com.anhtong8x.myapplication.apihelper.IProductsService;
-import com.anhtong8x.myapplication.apihelper.IUsersService;
-import com.anhtong8x.myapplication.config.GlobalVariableApp;
-import com.anhtong8x.myapplication.contract.ProductPagingContract;
+import com.anhtong8x.myapplication.utility.GlobalVariableApp;
+import com.anhtong8x.myapplication.contract.BaseContract;
 import com.anhtong8x.myapplication.model.ProductPagingRequest;
 import com.anhtong8x.myapplication.model.ProductResult;
-import com.anhtong8x.myapplication.model.UserResult;
-import com.anhtong8x.myapplication.presenter.ProductPagingPresenter;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import com.anhtong8x.myapplication.presenter.ProductsPresenter;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class ProductActivity extends AppCompatActivity implements ProductPagingContract.View, View.OnClickListener {
+public class ProductActivity extends AppCompatActivity implements View.OnClickListener, BaseContract.View<ArrayList<ProductResult.Item>, String> {
 
     private Button btnGetPaging;
-    private ProductPagingPresenter productPagingPresenter;
+    private ProductsPresenter mProductsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +40,8 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
 
     // init event click
     private void initPresenter() {
-        productPagingPresenter = new ProductPagingPresenter();
-        productPagingPresenter.setmView(this);
+        mProductsPresenter = new ProductsPresenter();
+        mProductsPresenter.setmView(this);
     }
 
     // init presenter
@@ -67,63 +49,34 @@ public class ProductActivity extends AppCompatActivity implements ProductPagingC
         btnGetPaging.setOnClickListener(this);
     }
 
-    private void getPagingProduct() {
-        final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
-        final String token = globalVariableApp.getmToken();
-        productPagingPresenter.handlePaging( new ProductPagingRequest(1,1,1),token);
-    }
-
-    @Override
-    public void getPagingSuccess(ProductResult productResult) {
-        Log.d("Tag", productResult.getTotalRecord() + "");
-    }
-
-    @Override
-    public void getPagingFailure(String mError) {
-        Log.d("Tag", mError);
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnGetPaging:
-                Log.d("Tagok", "ok click");
-                final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
-                final String token = globalVariableApp.getmToken();
-               // productPagingPresenter.handlePaging(new ProductPagingRequest(1,1,1),token);
-                //getPaging();
-                //upImageProduct();
+                getsPaging();
                 break;
             default:
                 break;
         }
     }
 
-    // code truc tiep k mvp
-    void getPaging(){
+    @Override
+    public void createSuccess(ArrayList<ProductResult.Item> msg) {
+        for(int i = 0; i < msg.size(); i++){
+            Toast.makeText(this, "" + msg.get(i).getDescription(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void createFailure(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    // code mvp
+    void getsPaging(){
         final GlobalVariableApp globalVariableApp = (GlobalVariableApp) this.getApplication();
         final String token = globalVariableApp.getmToken();
-        IProductsService iProductsService = ApiService.getClient().create(IProductsService.class);
-        Call<ProductResult> res = iProductsService.getPaging("vi-VN",1,1,1,
-                "Bearer " + token);
-        res.enqueue(new Callback<ProductResult>() {
-            @Override
-            public void onResponse(Call<ProductResult> call, Response<ProductResult> response) {
-                Log.d("TagP", "So ban ghi: " + response.body().getTotalRecord());
-
-                ProductResult productResult = response.body();
-                ArrayList<ProductResult.Item> lstItem = productResult.getItems();
-                for(int i = 0; i < lstItem.size(); i++){
-                    Log.d("Tagp","" + lstItem.get(i).getDescription() );
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ProductResult> call, Throwable t) {
-                Log.d("TagP", "Error" + t.toString());
-            }
-        });
+        mProductsPresenter.getsHandle(new ProductPagingRequest("vi-VN",1,1,1), token);
     }
 
 }

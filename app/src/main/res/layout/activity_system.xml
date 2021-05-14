@@ -30,18 +30,18 @@
             android:text="Create edit" />
 
         <Button
-            android:id="@+id/btnDelete"
+            android:id="@+id/btnGets"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create delete" />
+            android:text="Gets Product" />
 
         <Button
-            android:id="@+id/btnTest"
+            android:id="@+id/btnUploadFile"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Test Function" />
+            android:text="Upload File" />
 
     </LinearLayout>
 
