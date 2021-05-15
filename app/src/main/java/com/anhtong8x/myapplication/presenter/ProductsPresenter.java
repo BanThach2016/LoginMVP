@@ -57,9 +57,10 @@ public class ProductsPresenter implements BaseContract.Presenter<String, String,
 
             @Override
             public void onFetchFault(Exception error) {
-                mView.createFailure(Message.MSG_CREATE_ERR + error.toString());
+                mView.createFailure(Message.MSG_ERROR + error.toString());
             }
         });
 
     }
+
 }

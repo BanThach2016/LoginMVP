@@ -19,7 +19,7 @@ public interface IUsersService {
     // post only have a @FormUrlEncoded
     // .../api/Users/authenticate
     @FormUrlEncoded
-    @POST("Users/authenticate")
+    @POST("api/Users/authenticate")
     Call<UserResult> GetToken(@Field("UserName") String uName,
                               @Field("Password") String uPassword,
                               @Field("RememberMe") boolean uRemember);

@@ -15,3 +15,4 @@ public interface BaseContract {
         void getsHandle(F request, T token);
     }
 }
+
