@@ -3,7 +3,7 @@ package com.anhtong8x.myapplication.presenter;
 import com.anhtong8x.myapplication.service.ProductsService;
 import com.anhtong8x.myapplication.contract.UploadProductCallBack;
 import com.anhtong8x.myapplication.contract.UploadProductContract;
-import com.anhtong8x.myapplication.model.UploadProductRequest;
+import com.anhtong8x.myapplication.model.ProductUploadRequest;
 
 import okhttp3.ResponseBody;
 import retrofit2.Response;
@@ -20,7 +20,7 @@ public class UploadProductPresenter implements UploadProductContract.Presenter {
     }
 
     @Override
-    public void uploadHandle(UploadProductRequest uploadProductRequest, String token) {
+    public void uploadHandle(ProductUploadRequest uploadProductRequest, String token) {
         mProductsService = new ProductsService(uploadProductRequest);
         mProductsService.uploadFile(token, new UploadProductCallBack() {
             @Override

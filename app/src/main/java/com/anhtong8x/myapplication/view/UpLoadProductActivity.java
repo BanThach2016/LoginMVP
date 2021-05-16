@@ -22,7 +22,7 @@ import com.anhtong8x.myapplication.service.IProductsService;
 import com.anhtong8x.myapplication.utility.GlobalVariableApp;
 import com.anhtong8x.myapplication.utility.ReadPathUtil;
 import com.anhtong8x.myapplication.contract.UploadProductContract;
-import com.anhtong8x.myapplication.model.UploadProductRequest;
+import com.anhtong8x.myapplication.model.ProductUploadRequest;
 import com.anhtong8x.myapplication.presenter.UploadProductPresenter;
 
 import java.io.File;
@@ -219,7 +219,7 @@ public class UpLoadProductActivity extends AppCompatActivity implements View.OnC
                 MultipartBody.Part.createFormData("ImageFile", file.getName(), requestFile);
 
         int productId = 1;
-        UploadProductRequest request = new UploadProductRequest(productId, mCaption, mIsDefault, mSortOrder, mImageFile);
+        ProductUploadRequest request = new ProductUploadRequest(productId, mCaption, mIsDefault, mSortOrder, mImageFile);
 
         // 2. Call presenter
         mUploadProductPresenter.uploadHandle(request, token);

@@ -7,7 +7,7 @@ import com.anhtong8x.myapplication.model.ProductDownloadImageRequest;
 import com.anhtong8x.myapplication.model.ProductImageResult;
 import com.anhtong8x.myapplication.model.ProductPagingRequest;
 import com.anhtong8x.myapplication.model.ProductResult;
-import com.anhtong8x.myapplication.model.UploadProductRequest;
+import com.anhtong8x.myapplication.model.ProductUploadRequest;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -18,8 +18,7 @@ public class ProductsService {
     IProductsService mIProductsService;
 
     ProductPagingRequest mProductPagingRequest;
-    UploadProductRequest mUploadProductRequest;
-
+    ProductUploadRequest mProductUploadRequest;
     ProductDownloadImageRequest mProductDownloadImageRequest;
 
     // contractors
@@ -30,9 +29,9 @@ public class ProductsService {
     }
 
     // contractor upload file
-    public ProductsService( UploadProductRequest uploadProductRequest) {
+    public ProductsService( ProductUploadRequest uploadProductRequest) {
         this.mIProductsService = ApiService.getClient().create(IProductsService.class);
-        this.mUploadProductRequest = uploadProductRequest;
+        this.mProductUploadRequest = uploadProductRequest;
     }
 
     // contractor get product image
@@ -73,11 +72,11 @@ public class ProductsService {
     // upload image product
     public void uploadFile(String token, final UploadProductCallBack dataCallBack){
         Call<ResponseBody> res = mIProductsService.uploadFile(
-                mUploadProductRequest.getProductId(),
-                mUploadProductRequest.getmCaption(),
-                mUploadProductRequest.getmIsDefault(),
-                mUploadProductRequest.getmSortOrder(),
-                mUploadProductRequest.getRequestFile(),
+                mProductUploadRequest.getProductId(),
+                mProductUploadRequest.getmCaption(),
+                mProductUploadRequest.getmIsDefault(),
+                mProductUploadRequest.getmSortOrder(),
+                mProductUploadRequest.getRequestFile(),
                 "Bearer " + token
                 );
         res.enqueue(new Callback<ResponseBody>() {

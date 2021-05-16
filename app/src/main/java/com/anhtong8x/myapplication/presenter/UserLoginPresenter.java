@@ -9,10 +9,10 @@ import com.anhtong8x.myapplication.model.UserResult;
 
 public class UserLoginPresenter implements UserLoginContract.Presenter {
     private String TAG = UserLoginPresenter.class.getSimpleName();
-    private UserLoginContract.View mView;
 
     private UsersService mUserService;
 
+    private UserLoginContract.View mView;
     public void setmView(UserLoginContract.View mView) {
         this.mView = mView;
     }

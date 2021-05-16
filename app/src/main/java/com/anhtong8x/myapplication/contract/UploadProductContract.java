@@ -1,6 +1,6 @@
 package com.anhtong8x.myapplication.contract;
 
-import com.anhtong8x.myapplication.model.UploadProductRequest;
+import com.anhtong8x.myapplication.model.ProductUploadRequest;
 
 public interface UploadProductContract {
     interface View{
@@ -8,6 +8,6 @@ public interface UploadProductContract {
         void createFailure(String msg);
     }
     interface Presenter{
-        void uploadHandle(UploadProductRequest uploadProductRequest, String token);
+        void uploadHandle(ProductUploadRequest uploadProductRequest, String token);
     }
 }

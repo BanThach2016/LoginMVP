@@ -3,14 +3,14 @@ package com.anhtong8x.myapplication.model;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class UploadProductRequest {
+public class ProductUploadRequest {
     int productId;
     RequestBody mCaption;
     RequestBody mIsDefault;
     RequestBody mSortOrder;
     MultipartBody.Part requestFile;
 
-    public UploadProductRequest(int productId, RequestBody mCaption, RequestBody mIsDefault, RequestBody mSortOrder, MultipartBody.Part requestFile) {
+    public ProductUploadRequest(int productId, RequestBody mCaption, RequestBody mIsDefault, RequestBody mSortOrder, MultipartBody.Part requestFile) {
         this.productId = productId;
         this.mCaption = mCaption;
         this.mIsDefault = mIsDefault;

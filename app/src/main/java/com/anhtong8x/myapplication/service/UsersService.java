@@ -13,8 +13,8 @@ import retrofit2.Response;
 
 public class UsersService {
     IUsersService mIUserService;
-    UserLoginRequest mLoginRequest;
 
+    UserLoginRequest mLoginRequest;
     UserCreateRequest mUserCreateRequest;
 
     public void setmUserCreateRequest(UserCreateRequest mUserCreateRequest) {
